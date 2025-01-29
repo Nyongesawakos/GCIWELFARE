@@ -1,0 +1,107 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  
+  
+  
+
+ <div>
+
+</div>
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th scope="col"><h2><b><i>MEMBER PROFILE<i><b><h2></th>
+         </tr>
+          <tr>
+            <th scope="col"><h2><b>{{index.host}} {{index.lastName}}<b><h2></th>
+             
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><b><h4>Home Bible Church<b><h4></th>
+            <td><h4>{{index.HBC}}<h4></td>
+            
+          </tr>
+          <tr>
+            <th scope="row"><b><h4>Phone Number<b><h4></th>
+            <td><h4>+254 {{index.phone}}<h4></td>
+          </tr>
+          <tr>
+            <th scope="row"><b><h4>ID Number<b><h4></th>
+            <td colspan="2"><h4>{{index.identity}}<h4></td>
+          </tr>
+          <tr>
+            <th scope="row"><b><h4>Dependants<b><h4></th>
+            <td><h4>{{index.description}}<h4></td>
+            
+          </tr>
+        </tbody>
+      </table>
+<br> <br>
+      <div class="card">
+        <div class="card-body">
+        <table id="example" class="table table-bordered table-hover" style="width:95%">
+          <thead>
+            <tr class="bg-primary">
+                 
+                  <th class="bg-info">Date</th>
+                  <th class="bg-info">Code</th>
+                  <th class="bg-info">Month</th>
+                  <th class="bg-info">contribution</th>
+                  
+              </tr>
+          </thead>
+          <tbody>
+           
+            {%for update in payment%}
+            {% if request.user == update.owner %}
+              <tr class="table-warning">
+                  <td>{{update.updated| date}}</td>
+                  <td>{{update.code}}</td>
+                  <td>{{update.month}}</td>
+                  <td>{{update.amount}}</td>  
+                  
+              </tr>
+              {%endif%}
+              {%endfor%}
+              
+             
+              
+          <tfoot>
+           
+          </tfoot>
+      </table>
+    
+      </div>
+      </div>
+      
+      
+        <p></p>
+  
+        <head>
+          <style>
+          table card-body{
+            font-family: arial, sans-serif;
+            font-size: medium;
+            font:300;
+            border-collapse: collapse;
+            width: 100%;
+          }
+          
+          td, th {
+            border: 1px solid #C0C0C0;
+            text-align: left;
+            padding: 8px;
+            background-color: #051634;
+          }
+          
+          tr:nth-child(even) {
+            background-color: #C0C0C0;
+          }
+          
+          </style>
+          <br> <br>
+          
+          {%endblock%}

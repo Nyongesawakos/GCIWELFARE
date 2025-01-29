@@ -1,0 +1,59 @@
+{% extends 'main.html '%}
+
+{% block content %}
+<main class="create-room layout">
+    <div class="container">
+      <div class="layout__box">
+        <div class="layout__boxHeader">
+          <div class="layout__boxTitle">
+            
+            <a href="index.html">
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <title>arrow-left</title>
+                <path
+                  d="M13.723 2.286l-13.723 13.714 13.719 13.714 1.616-1.611-10.96-10.96h27.625v-2.286h-27.625l10.965-10.965-1.616-1.607z">
+                </path>
+              </svg>
+            </a>
+            <h3>Please Update Member Payments</h3>
+            
+            <br> <br>  <br> <br>   
+          </div>
+        </div>
+        <div><small>This page Can only Be seen by Administrators</small></div>
+<div class="layout__body">
+<h3>Update Payments</h3>
+<form method="post" action="">
+  {%csrf_token %}
+  <div class="form__group">
+    <form method="post" action="">
+    <label for="room_topic">Select Member's firstname</label>
+        {{form.owner}}
+  </div>
+  <div class="form__group">
+    <label for="room_topic">Select Member's lastName</label>
+    
+        {{form.room}}
+      </div>
+      <div class="form__group">
+        <label for="room_topic" >Month</label>
+     {{form.month}}
+  </div>
+  <div class="form__group">
+    <label for="room_topic">Mpesa Code</label>
+   
+        {{form.code}}
+  </div>
+  <div class="form__group">
+    <label for="room_topic">Amount</label>
+        {{form.amount}}
+  </div>
+  
+  <div class="form__action">
+    <a class="btn btn--primary" href="{% url 'home' %}">Cancel</a>
+    <button class="btn btn--main" input type="submit" value="submit">Update Now</button>
+    
+  </div>
+</form>
+</div>
+{% endblock%}
