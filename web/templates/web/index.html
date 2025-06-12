@@ -1,0 +1,114 @@
+{% extends 'main.html' %}
+
+{% block content %}
+ <div>
+<p><b>{{index.host}} {{index.name}}</b></p>
+<br>
+</div>
+</div>
+      <table class="table table-borderless">
+        <thead>
+         
+         
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><b><h4>HOME BIBLE CHURCH<b><h4></th>
+            <td><h4>{{index.choice}}<h4></td>
+            
+          </tr>
+          <tr>
+            <th scope="row"><b><h4>PHONE NUMBER<b><h4></th>
+            <td><h4>+254 {{index.phone}}<h4></td>
+          </tr>
+          <tr>
+            <th scope="row"><b><h4>ID NUMBER<b><h4></th>
+            <td colspan="2"><h4>{{index.identity}}<h4></td>
+          </tr>
+          <tr>
+            <th scope="row"><b><h4>DEPENDANTS<b><h4></th>
+            <td><h4><h1>Parent:</h1>{{index.Parent}}<br><b>Child:</b> {{index.Child}} <br> <b>Spouse:</b>{{index.Spouse}}<h4></td>
+            
+          </tr>
+        </tbody>
+      </table>
+      <p><b>Updates</b></p>
+<br> 
+    </div>
+      <div class="card">
+        <div class="card-body">
+        <table id="example" class="table table-bordered table-hover" style="width:95%">
+          <thead>
+            <tr class="bg-primary">
+                 
+                  <th class="bg-info">Date</th>
+                  <th class="bg-info">Code</th>
+                  <th class="bg-info">Month</th>
+                  <th class="bg-info">contribution</th>
+                  
+              </tr>
+          </thead>
+          <tbody>
+           
+            {%for update in payment%}
+            {% if request.user == update.owner %}
+              <tr class="table-warning">
+                  <td>{{update.updated| date}}</td>
+                  <td>{{update.code}}</td>
+                  <td>{{update.choice}}</td>
+                  <td>{{update.amount}}</td> 
+                   
+               
+                  
+              </tr>
+              {%endif%}
+              {%endfor%}
+              
+             
+              
+          <tfoot>
+           
+          </tfoot>
+      </table>
+    
+      </div>
+      </div>
+      
+      
+        <p></p>
+  
+        <head>
+          <style>
+          table card-body{
+            font-family: arial, sans-serif;
+            font-size: medium;
+            font:300;
+            border-collapse: collapse;
+            width: 100%;
+          }
+          
+          td, th {
+            border: 1px solid #051634;
+            text-align: left;
+            color: #1e1e1f;
+            padding: 8px;
+            background-color: #C0C0C0;
+          }
+          
+          tr:nth-child(even) {
+            background-color: #C0C0C0;
+          }
+          p{
+            font-size: medium;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: #051634;
+            padding: 1%;
+          }
+          
+          </style>
+          <br> <br>
+          
+             
+                 
+                </div>
+          {%endblock%}

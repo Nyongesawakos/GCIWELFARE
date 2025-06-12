@@ -1,0 +1,145 @@
+{%load static%}
+{% block content %}
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>GCIWELFARE</title>
+        <link rel="stylesheet" 
+              href="{% static 'style/Style2.css'%}">
+        <link rel="stylesheet" 
+        media="screen" href="{% static 'style/responsive.css'%}">
+    </head>
+    <header>
+
+        <div class="logosec">
+            <div class="logo">ADMIN PANEL</div>
+            <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20221210182541/Untitled-design-(30).png"
+                class="icn menuicn" 
+                id="menuicn" 
+                alt="menu-icon">
+        </div>
+
+        <div class="searchbar">
+            <input type="text" 
+                   placeholder="Search">
+            <div class="searchbtn">
+              <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20221210180758/Untitled-design-(28).png"
+                    class="icn srchicn" 
+                    alt="search-icon">
+              </div>
+        </div>
+
+        <div class="message">
+            <div class="circle"></div>
+            <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20221210183322/8.png" 
+                 class="icn" 
+                 alt="">
+            <div class="dp">
+              <img src=
+"https://media.geeksforgeeks.org/wp-content/uploads/20221210180014/profile-removebg-preview.png"
+                    class="dpicn" 
+                    alt="dp">
+              </div>
+        </div>
+        
+     
+    
+    </header>
+  <br><br><br><br>
+  <div>
+    <br><br>
+    <form method="POST" action="">
+        {%csrf_token %}
+        <label for="fname">Expense:</label>
+{{form.name}}
+<label for="fname">Date:</label>
+{{form.date}}
+<label for="fname">Amount:</label>
+{{form.Amount}}
+
+        
+        <input type="submit" value="submit"/>   
+       
+    </form>
+    </div>
+
+                <div class="report-header">
+                    <h1 class="recent-Articles">TotalOutflows</h1>
+                    <a href="{% url 'user_list' %}">Back</a>
+                    
+                </div>
+
+             
+                    <table id="example" class="table table-striped table-hover" style="width:95%">
+                        <thead>
+                          <tr class="bg-primary">
+                              <th class="bg-info">Date</th>
+                              <th class="bg-info">Expenditure on</th>
+                              <th class="bg-info">Amount Spent</th>
+                               
+                                
+                                
+                            </tr>
+                        </thead>
+                        
+                    <tbody>
+                        {% for cash_expenditure in s %}  
+                        <tr class="table-warning">
+                            <td>{{cash_expenditure.date}} </td>
+                            <td>{{ cash_expenditure.name}} </td>
+                            <td>ksh.{{ cash_expenditure.Amount}}</td>
+                         
+                            
+                            
+                        </tr>
+                       
+                        </tbody>
+                   
+                        {% endfor %}
+                        
+                        <style>
+                            table card-body{
+                              font-family: arial, sans-serif;
+                              font-size: medium;
+                              font:300;
+                              border-collapse: collapse;
+                              width: 100%;
+                            }
+                            
+                            td, th {
+                              border: 1px solid #C0C0C0;
+                              text-align: left;
+                              padding: 8px;
+                              background-color: #d3d8e0;
+                            }
+                            
+                            tr:nth-child(even) {
+                              background-color: #C0C0C0;
+                            }
+                            label{
+                              font-size: medium;
+                            }
+                            a{
+                              font-size: medium;
+                              text-decoration: none;
+                            }
+                           </style>
+                           </table>
+
+                       
+            </div>
+        </div>
+   
+
+    <script src="{% static 'style/index.js' %}"></script>
+    
+</body>
+</html>
+
+{% endblock %}
+
